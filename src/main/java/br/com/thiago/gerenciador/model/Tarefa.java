@@ -4,11 +4,12 @@ import br.com.thiago.gerenciador.model.enums.Prioridade;
 import br.com.thiago.gerenciador.model.enums.Situacao;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "tb_tarefa")
-public class Tarefa {
+public class Tarefa implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
