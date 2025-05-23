@@ -24,6 +24,10 @@ public class TarefaService {
         tarefaDao.remover(tarefa);
     }
 
+    public Tarefa listarPorId(Long id){
+        return tarefaDao.buscarPorId(id);
+    }
+
     public List<Tarefa> listarTodas(){
         return tarefaDao.listarTodas();
     }

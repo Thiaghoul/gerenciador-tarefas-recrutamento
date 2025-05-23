@@ -3,11 +3,11 @@
     <persistence-unit name="gerenciador-tarefas">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
-            <!-- URL do PostgreSQL (padrão: porta 5432) -->
+            <!-- URL do PostgreSQL (porta 5432) -->
             <property name="javax.persistence.jdbc.url"
                       value="jdbc:postgresql://localhost:5432/gerenciador-tarefas"/>
 
-            <!-- Usuário e senha padrão (geralmente "postgres" ou seu usuário) -->
+            <!-- Usuário e senha padrão (postgres e admin) -->
             <property name="javax.persistence.jdbc.user" value="postgres"/>
             <property name="javax.persistence.jdbc.password" value="admin"/>
 
