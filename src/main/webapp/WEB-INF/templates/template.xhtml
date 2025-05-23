@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: thiago
+  Date: 23/05/2025
+  Time: 19:29
+-->
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui ="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <meta charset="UTF-8" />
+    <title><ui:insert name="tituloDaPagina">Titulo Padrão</ui:insert></title>
+    <style>
+        body { font-family: sans-serif}
+        .cabecalho-template {background-color: #eee; padding: 10px; margin-bottom: 10px; }
+        .conteudo-template {padding: 10px; border: 1px solid #ccc; margin-bottom: 10px;}
+        .rodape-template {background-color: #eee; padding: 10px; text-align: center; font-size: 0.9em; margin-top: 10px;}
+    </style>
+</h:head>
+
+<h:body>
+
+    <div class="cabecalho-template">
+        Cabeçalho do Template Principal
+    </div>
+
+    <div class="conteudo-template">
+        <ui:insert name="conteudoPrincipal">
+        </ui:insert>
+    </div>
+
+    <div class="rodape-template">
+        Meu Projeto Gerenciador de Tarefas - &copy; 2025
+    </div>
+
+</h:body>
+</html>
