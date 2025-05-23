@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+      <ui:define name="tituloDaPagina">Cadastrar Nova Tarefa</ui:define>
+
+      <ui:define name="conteudoPrincipal">
+
+         <h:form id="formCadastro">
+
+            <h:panelGrid columns="2" cellpadding="5" styleClass="formularioCadastro"> <h:outputLabel for="titulo" value="Título:" />
+               <h:inputText id="titulo" value="#{tarefaBean.tarefa.titulo}" required="true" requiredMessage="O título é obrigatório." style="width: 300px;"/>
+
+               <h:outputLabel for="descricao" value="Descrição:" />
+               <h:inputTextarea id="descricao" value="#{tarefaBean.tarefa.descricao}" rows="5" cols="40" style="width: 300px;"/>
+
+               <h:outputLabel for="responsavel" value="Responsável:" />
+               <h:selectOneMenu id="responsavel" value="#{tarefaBean.tarefa.responsavel}" required="true" requiredMessage="Selecione um responsável.">
+                  <f:selectItem itemLabel="-- Selecione --" itemValue="" />
+                  <f:selectItems value="#{tarefaBean.responsaveisDisponiveis}" />
+               </h:selectOneMenu>
+
+               <h:outputLabel for="prioridade" value="Prioridade:" />
+               <h:selectOneMenu id="prioridade" value="#{tarefaBean.tarefa.prioridade}" required="true" requiredMessage="Selecione uma prioridade.">
+                  <f:selectItem itemLabel="-- Selecione --" itemValue="" />
+                  <f:selectItems value="#{tarefaBean.prioridadesDisponiveis}" />
+               </h:selectOneMenu>
+
+               <h:outputLabel for="deadline" value="Deadline:" />
+               <h:inputText id="deadline" value="#{tarefaBean.tarefa.deadline}" required="true" requiredMessage="A data limite é obrigatória.">
+                  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
+
+            </h:panelGrid>
+
+            <h:commandButton value="Cadastrar" action="#{tarefaBean.salvar}" style="margin-top:15px;" />
+            <br/>
+
+            <h:messages styleClass="mensagensDeErro" layout="list" />
+
+         </h:form>
+
+      </ui:define>
+
+</ui:composition>
+
+</html>
