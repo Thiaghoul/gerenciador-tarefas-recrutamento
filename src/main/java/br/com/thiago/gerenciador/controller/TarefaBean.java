@@ -2,6 +2,7 @@ package br.com.thiago.gerenciador.controller;
 
 import br.com.thiago.gerenciador.model.Tarefa;
 import br.com.thiago.gerenciador.model.enums.Prioridade;
+import br.com.thiago.gerenciador.model.enums.Situacao;
 import br.com.thiago.gerenciador.service.TarefaService;
 
 import javax.annotation.PostConstruct;
@@ -39,7 +40,7 @@ public class TarefaBean implements Serializable {
     }
 
     public String salvar(){
-        System.out.println("TarefaBean; salar() chamado.");
+        System.out.println("TarefaBean salvar() chamado.");
         try{
             if(this.deadlineFormulario != null){
                 this.tarefa.setDeadline(
@@ -50,6 +51,7 @@ public class TarefaBean implements Serializable {
             }else{
                 this.tarefa.setDeadline(null);
             }
+            this.tarefa.setSituacao(Situacao.EM_ANDAMENTO);
             this.tarefaService.salvar(this.tarefa);
 
             FacesContext.getCurrentInstance().addMessage(null,

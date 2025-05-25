@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+        <ui:define name="tituloDaPagina">Listagem de Tarefas</ui:define>
+
+        <ui:define name="conteudoPrincipal">
+
+           <h:form id="formFiltros">
+              <h:panelGrid columns="5" cellpadding="5" style="margin-bottom: 15px;">
+
+                 <h:outputLabel for="filtroNumero" value="Número:" />
+                 <h:inputText id="filtroNumero" value="#{tarefaListagemBean.filtroNumero}" />
+
+                 <h:outputLabel for="filtroTituloDescricao" value="Título/Descrição:" />
+                 <h:inputText id="filtroTituloDescricao" value="#{tarefaListagemBean.filtroTituloDescricao}"
+                              style="width: 200px;"/>
+
+                 <span></span>
+                 <h:outputLabel for="filtroResponsavel" value="Responsável:" />
+                 <h:selectOneMenu id="filtroResponsavel" value="#{tarefaListagemBean.filtroResponsavel}">
+                    <f:selectItem itemLabel="-- Todos --" itemValue="" />
+                    <f:selectItems value="#{tarefaListagemBean.responsaveis}" />
+                 </h:selectOneMenu>
+
+                 <h:outputLabel for="filtroSituacao" value="Situação:" />
+                 <h:selectOneMenu id="filtroSituacao" value="#{tarefaListagemBean.filtroSituacao}">
+                    <f:selectItem itemLabel="-- Todas --" noSelectionOption="true" />
+                    <f:selectItems value="#{tarefaListagemBean.situacoesDisponiveis}" />
+                 </h:selectOneMenu>
+
+                 <h:commandButton value="Buscar Tarefas" action="#{tarefaListagemBean.buscar}" />
+
+              </h:panelGrid>
+           </h:form>
+
+           <h:form id="formTabelaTarefas">
+              <h:dataTable value="#{tarefaListagemBean.tarefasFiltradas}" var="tarefa"
+                           rendered="#{not empty tarefaListagemBean.tarefasFiltradas}"
+                           styleClass="tabelaTarefas" headerClass="tabelaCabecalho"
+                           rowClasses="linhaPar, linhaImpar" cellpadding="5" border="1">
+
+                 <h:column>
+                    <f:facet name="header">Número</f:facet>
+                    <h:outputText value="#{tarefa.id}" />
+                 </h:column>
+
+                 <h:column>
+                    <f:facet name="header">Título</f:facet>
+                    <h:outputText value="#{tarefa.titulo}" />
+                 </h:column>
+
+                 <h:column>
+                    <f:facet name="header">Responsável</f:facet>
+                    <h:outputText value="#{tarefa.responsavel}" />
+                 </h:column>
+
+                 <h:column>
+                    <f:facet name="header">Situação</f:facet>
+                    <h:outputText value="#{tarefa.situacao}" />
+                 </h:column>
+
+                 <h:column>
+                    <f:facet name="header">Ações</f:facet>
+                    <h:commandLink value="Editar" action="#{tarefaListagemBean.editar(tarefa.id)}" style="margin-right: 5px;" />
+                    |
+                    <h:commandLink value="Excluir" action="#{tarefaListagemBean.excluir(tarefa.id)}"
+                                   onclick="return confirm('Tem certeza que deseja excluir esta tarefa?');" style="margin-left: 5px; margin-right: 5px;" />
+                    |
+                    <h:commandLink value="Concluir" action="#{tarefaListagemBean.concluir(tarefa.id)}"
+                                   rendered="#{tarefa.situacao.name() ne 'CONCLUIDA'}" style="margin-left: 5px;" />
+                 </h:column>
+
+              </h:dataTable>
+
+              <p style="margin-top:10px;">
+                 <h:outputText value="Nenhuma tarefa encontrada." rendered="#{empty tarefaListagemBean.tarefasFiltradas}" />
+              </p>
+
+           </h:form>
+
+        </ui:define>
+
+</ui:composition>
+</html>
