@@ -140,6 +140,11 @@ public class TarefaListagemBean implements Serializable {
         }
     }
 
+    public String editar(Long id){
+        System.out.println("TarefaListagemBean:s editar() para id: "+ id);
+        return "cadastroTarefa?faces-redirect=true&id=" + id;
+    }
+
     public List<Tarefa> getTarefasFiltradas() {
         return tarefasFiltradas;
     }

@@ -16,6 +16,7 @@ import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @ManagedBean
 @ViewScoped
@@ -28,6 +29,8 @@ public class TarefaBean implements Serializable {
     private Date deadlineFormulario;
     private TarefaService tarefaService;
 
+    private boolean modoEdicao = false;
+
     public TarefaBean(){
         System.out.println("---TarefaBean instanciado---");
     }
@@ -37,10 +40,39 @@ public class TarefaBean implements Serializable {
         this.tarefa = new Tarefa();
         this.responsaveis = Arrays.asList("Thiago","Rubens","Pedro","Samuel");
         this.tarefaService = new TarefaService();
+
+        FacesContext faces = FacesContext.getCurrentInstance();
+        Map<String, String> params = faces.getExternalContext().getRequestParameterMap();
+        String idParam = params.get("id");
+
+        if(idParam != null && !idParam.isEmpty()){
+            try{
+                Long id = Long.parseLong(idParam);
+                this.tarefa = tarefaService.listarPorId(id);
+                if(this.tarefa != null){
+                    this.modoEdicao = true;
+                    if(this.tarefa.getDeadline() != null){
+                        this.deadlineFormulario = Date.from(this.tarefa.getDeadline()
+                                .atStartOfDay(ZoneId.systemDefault()).toInstant());
+                    }
+                    System.out.println("Modo edição: editar tareda com id: "+ id);
+                }else {
+                    System.out.println("Tarefa id: "+ id + " não encontrada. Iniciando novo cadastro");
+                    this.tarefa = new Tarefa();
+                    this.modoEdicao = false;
+                }
+            }catch (NumberFormatException e){
+                System.err.println("Id de tarefa inválido na URL: " + idParam );
+                this.tarefa = new Tarefa();
+                this.modoEdicao = false;
+                System.out.println("Modo novo vadastro");
+            }
+        }
     }
 
     public String salvar(){
-        System.out.println("TarefaBean salvar() chamado.");
+        System.out.println("TarefaBean salvar() chamado. Modo edição: "+ modoEdicao);
+        FacesContext context = FacesContext.getCurrentInstance();
         try{
             if(this.deadlineFormulario != null){
                 this.tarefa.setDeadline(
@@ -54,13 +86,21 @@ public class TarefaBean implements Serializable {
             this.tarefa.setSituacao(Situacao.EM_ANDAMENTO);
             this.tarefaService.salvar(this.tarefa);
 
-            FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!", "Tarefa cadastrada com sucesso!"));
+            String mensagemSucesso = modoEdicao ? "Tarefa atualizada com sucesso.": "Tarefa cadastrada com sucesso.";
 
-            this.tarefa = new Tarefa();
-            this.deadlineFormulario = null;
+            context.addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO,
+                            "Sucesso!",
+                            mensagemSucesso));
 
-            //return "listagemTarefas?faces-redirect=true";
+            if(!modoEdicao){
+                this.tarefa = new Tarefa();
+                this.deadlineFormulario = null;
+
+            }else{
+                return "listagemTarefas?faces-redirect=true";
+
+            }
             return null;
 
         } catch (Exception e) {
@@ -73,6 +113,10 @@ public class TarefaBean implements Serializable {
 
             return null;
         }
+    }
+
+    public boolean isModoEdicao() {
+        return modoEdicao;
     }
 
     public Tarefa getTarefa(){
