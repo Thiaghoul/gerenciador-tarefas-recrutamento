@@ -1,0 +1,303 @@
+/* --- ESTILOS GERAIS --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* --- ESTILOS PARA O TEMPLATE PRINCIPAL (template.xhtml) --- */
+.header-template {
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.content-template {
+    padding: 10px;
+    min-height: calc(100vh - 120px);
+}
+
+.footer-template {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9em;
+}
+
+/* --- ESTILOS PARA PAINÉIS (Cadastro e Listagem) --- */
+.painel-formulario, .painel-listagem {
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+.painel-formulario {
+    width: 650px;
+}
+
+.painel-listagem {
+    width: 90%;
+    max-width: 950px;
+}
+
+.painel-titulo {
+    background-color: #f0f0f0;
+    padding: 12px 20px;
+    font-weight: bold;
+    font-size: 1.1em;
+    border-bottom: 1px solid #dddddd;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: #444;
+}
+
+.painel-conteudo {
+    padding: 25px;
+}
+
+
+/* --- ESTILOS PARA FORMULÁRIO DE CADASTRO (cadastroTarefa.xhtml) --- */
+.grid-cadastro {
+    width: 100%;
+}
+
+.grid-cadastro .col-label {
+    text-align: right;
+    padding-right: 15px;
+    width: 130px;
+    vertical-align: top;
+    padding-top: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+.grid-cadastro .col-field {
+    text-align: left;
+    vertical-align: top;
+}
+
+.input-largo, .textarea-largo, .input-select, .input-curto {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    font-size: 0.95em;
+}
+.input-largo:focus, .textarea-largo:focus, .input-select:focus, .input-curto:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+
+.input-largo, .textarea-largo {
+    width: 100%;
+}
+.textarea-largo {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.input-select {
+    width: 220px;
+    background-color: white;
+    height: 36px;
+    box-sizing: border-box;
+}
+
+.input-curto {
+    width: 180px;
+    height: 36px;
+    box-sizing: border-box;
+}
+
+.mensagem-erro {
+    color: #D8000C;
+    font-size: 0.85em;
+    display: block;
+    min-height: 1.2em;
+    margin-top: 2px;
+    padding-left: 2px;
+}
+
+.div-botao-centralizado {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.botao-principal {
+    padding: 0 22px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.95em;
+    color: #333;
+    height: 36px;
+    box-sizing: border-box;
+}
+.botao-principal:hover {
+    background-color: #e6e6e6;
+    border-color: #bbb;
+}
+
+/* --- ESTILOS PARA FILTROS (listagemTarefas.xhtml) --- */
+.secao-filtros-container {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 25px;
+    border: 1px solid #e0e0e0;
+}
+
+.linha-filtro {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.linha-filtro:last-child {
+    margin-bottom: 0;
+}
+
+.label-filtro {
+    width: 130px;
+    min-width: 130px;
+    text-align: right;
+    padding-right: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+.input-filtro-numero {
+    width: 180px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.input-filtro-titulo-desc {
+    flex-grow: 1;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.grupo-campos-inline {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    gap: 10px;
+}
+
+.input-select-filtro {
+    min-width: 180px;
+    background-color: white;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 36px;
+    box-sizing: border-box;
+}
+
+.label-para-situacao {
+    margin-left: 10px;
+    margin-right: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.botao-buscar {
+    background-color: #f0f0f0;
+    padding: 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: normal;
+    margin-left: auto;
+    height: 36px;
+    box-sizing: border-box;
+    color: #333;
+}
+.botao-buscar:hover {
+    background-color: #e0e0e0;
+}
+
+.separador-listagem {
+    border: 0;
+    border-top: 1px solid #e0e0e0;
+    margin: 25px 0;
+}
+
+/* --- ESTILOS PARA TABELA DE TAREFAS (listagemTarefas.xhtml) --- */
+.tabela-tarefas {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.tabela-tarefas th, .tabela-tarefas .cabecalho-tabela-jsf th, .tabela-tarefas .cabecalho-tabela-jsf td {
+    background-color: #6c757d;
+    color: white;
+    padding: 12px 10px;
+    text-align: center;
+    border: 1px solid #5a6268;
+}
+
+.tabela-tarefas td {
+    padding: 10px 8px;
+    border: 1px solid #e0e0e0;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.tabela-tarefas .linha-par-jsf td {
+    background-color: #f8f9fa;
+}
+.tabela-tarefas .linha-impar-jsf td {
+    background-color: #ffffff;
+}
+
+.coluna-acoes {
+    text-align: center;
+    width: 170px;
+}
+.link-acao {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 4px;
+}
+.link-acao:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.mensagem-lista-vazia {
+    margin-top: 20px;
+    font-style: italic;
+    text-align: center;
+    display: block;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+/* --- ESTILOS PARA MENSAGENS GLOBAIS (usado em ambas as páginas) --- */
+.mensagemGlobalInfo, .mensagemGlobalError, .mensagemGlobalWarn, .mensagemGlobalFatal {
+    margin: 15px 0;
+    padding: 12px 15px;
+    border-radius: 4px;
+    text-align: left;
+    list-style-position: inside;
+}
+.mensagemGlobalInfo { border: 1px solid #28a745; background-color: #d4edda; color: #155724; }
+.mensagemGlobalError { border: 1px solid #dc3545; background-color: #f8d7da; color: #721c24; }
+.mensagemGlobalWarn { border: 1px solid #ffc107; background-color: #fff3cd; color: #856404; }

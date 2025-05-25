@@ -1,0 +1,307 @@
+/* --- ESTILOS GERAIS --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Um fundo geral suave se o conteúdo não preencher tudo */
+    color: #333;
+}
+
+/* --- ESTILOS PARA O TEMPLATE PRINCIPAL (template.xhtml) --- */
+.header-template { /* Supondo que você tenha uma div com esta classe no seu template */
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.content-template {
+    padding: 10px; /* Espaço para o conteúdo principal não colar nas bordas */
+    min-height: calc(100vh - 120px); /* Tenta fazer o conteúdo ocupar a altura, ajuste o valor 120px conforme altura do header/footer */
+}
+
+.footer-template { /* Supondo que você tenha uma div com esta classe no seu template */
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    /* position: fixed; /* Descomente se quiser rodapé fixo no fundo da tela */
+    /* bottom: 0; */
+    /* width: 100%; */
+    font-size: 0.9em;
+}
+
+/* --- ESTILOS PARA PAINÉIS (Cadastro e Listagem) --- */
+.painel-formulario, .painel-listagem {
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    margin: 30px auto;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+.painel-formulario {
+    width: 650px;
+}
+
+.painel-listagem {
+    width: 90%;
+    max-width: 950px;
+}
+
+.painel-titulo {
+    background-color: #f0f0f0; /* Fundo cinza claro para a barra de título */
+    padding: 12px 20px;
+    font-weight: bold;
+    font-size: 1.1em;
+    border-bottom: 1px solid #dddddd; /* Borda inferior do título */
+    border-top-left-radius: 5px; /* Arredondar cantos superiores */
+    border-top-right-radius: 5px;
+    color: #444; /* Cor do texto do título */
+}
+
+.painel-conteudo {
+    padding: 25px; /* Mais padding interno */
+}
+
+
+/* --- ESTILOS PARA FORMULÁRIO DE CADASTRO (cadastroTarefa.xhtml) --- */
+.grid-cadastro {
+    width: 100%;
+}
+
+.grid-cadastro .col-label {
+    text-align: right;
+    padding-right: 15px; /* Mais espaço entre label e campo */
+    width: 130px;       /* Largura dos labels */
+    vertical-align: top;
+    padding-top: 10px;  /* Alinhar com o padding dos inputs */
+    font-weight: bold;
+    color: #555;
+}
+
+.grid-cadastro .col-field {
+    text-align: left;
+    vertical-align: top;
+}
+
+.input-largo, .textarea-largo, .input-select, .input-curto {
+    padding: 8px 10px; /* Padding interno dos campos */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    font-size: 0.95em;
+}
+.input-largo:focus, .textarea-largo:focus, .input-select:focus, .input-curto:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+
+.input-largo, .textarea-largo {
+    width: 100%;
+}
+.textarea-largo {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.input-select {
+    width: 220px; /* Um pouco mais largo para os selects */
+    background-color: white; /* Garante fundo branco */
+    height: 36px;
+    box-sizing: border-box;
+}
+
+.input-curto {
+    width: 180px;
+    height: 36px;
+    box-sizing: border-box;
+}
+
+.mensagem-erro {
+    color: #D8000C; /* Vermelho mais escuro */
+    font-size: 0.85em;
+    display: block;
+    min-height: 1.2em;
+    margin-top: 2px;
+    padding-left: 2px; /* Pequeno recuo */
+}
+
+.div-botao-centralizado {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.botao-principal {
+    padding: 0 22px; /* Padding horizontal */
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.95em;
+    color: #333;
+    height: 36px;
+    box-sizing: border-box;
+}
+.botao-principal:hover {
+    background-color: #e6e6e6;
+    border-color: #bbb;
+}
+
+/* --- ESTILOS PARA FILTROS (listagemTarefas.xhtml) --- */
+.secao-filtros-container {
+    background-color: #f7f7f7; /* Fundo da área de filtros */
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 25px;
+    border: 1px solid #e0e0e0;
+}
+
+.linha-filtro {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px; /* Mais espaço entre as linhas de filtro */
+}
+.linha-filtro:last-child {
+    margin-bottom: 0;
+}
+
+.label-filtro {
+    width: 130px;
+    min-width: 130px;
+    text-align: right;
+    padding-right: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+.input-filtro-numero {
+    width: 180px; /* Largura do campo Número */
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.input-filtro-titulo-desc {
+    flex-grow: 1;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.grupo-campos-inline { /* Container para Responsável, Situação e Botão Buscar */
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.input-select-filtro {
+    min-width: 180px;
+    background-color: white;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 36px; /* Para alinhar altura com botão */
+    box-sizing: border-box;
+}
+
+.label-para-situacao { /* Label "Situação:" que fica antes do seu select */
+    margin-left: 10px; /* Espaço depois do select de Responsável */
+    margin-right: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.botao-buscar {
+    background-color: #f0f0f0;
+    padding: 0 20px; /* Padding horizontal */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: normal;
+    margin-left: auto;
+    height: 36px; /* Para alinhar altura com os selects */
+    box-sizing: border-box;
+    color: #333;
+}
+.botao-buscar:hover {
+    background-color: #e0e0e0;
+}
+
+.separador-listagem {
+    border: 0;
+    border-top: 1px solid #e0e0e0;
+    margin: 25px 0;
+}
+
+/* --- ESTILOS PARA TABELA DE TAREFAS (listagemTarefas.xhtml) --- */
+.tabela-tarefas {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.9em; /* Fonte um pouco menor para caber mais info */
+}
+
+.tabela-tarefas th, .tabela-tarefas .cabecalho-tabela-jsf th, .tabela-tarefas .cabecalho-tabela-jsf td {
+    background-color: #6c757d; /* Cinza mais escuro e moderno */
+    color: white;
+    padding: 12px 10px; /* Mais padding no cabeçalho */
+    text-align: center;
+    border: 1px solid #5a6268;
+}
+
+.tabela-tarefas td {
+    padding: 10px 8px;
+    border: 1px solid #e0e0e0;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.tabela-tarefas .linha-par-jsf td {
+    background-color: #f8f9fa;
+}
+.tabela-tarefas .linha-impar-jsf td {
+    background-color: #ffffff;
+}
+
+.coluna-acoes {
+    text-align: center;
+    width: 170px;
+}
+.link-acao {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 4px;
+}
+.link-acao:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.mensagem-lista-vazia {
+    margin-top: 20px;
+    font-style: italic;
+    text-align: center;
+    display: block;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+/* --- ESTILOS PARA MENSAGENS GLOBAIS (usado em ambas as páginas) --- */
+.mensagemGlobalInfo, .mensagemGlobalError, .mensagemGlobalWarn, .mensagemGlobalFatal {
+    margin: 15px 0; /* Margem apenas no topo/baixo se estiver no fluxo */
+    padding: 12px 15px;
+    border-radius: 4px;
+    text-align: left; /* Mensagens de sistema geralmente são alinhadas à esquerda */
+    list-style-position: inside; /* Se estiver usando layout="list" */
+}
+.mensagemGlobalInfo { border: 1px solid #28a745; background-color: #d4edda; color: #155724; }
+.mensagemGlobalError { border: 1px solid #dc3545; background-color: #f8d7da; color: #721c24; }
+.mensagemGlobalWarn { border: 1px solid #ffc107; background-color: #fff3cd; color: #856404; }

@@ -5,61 +5,63 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="/WEB-INF/templates/template.xhtml">
-      <ui:define name="tituloDaPagina">#{tarefaBean.modoEdicao ? 'Editar Tarefa':'Cadastrar Tarefa'}</ui:define>
+   <ui:define name="tituloDaPagina">#{tarefaBean.modoEdicao ? 'Editar Tarefa':'Cadastrar Tarefa'}</ui:define>
 
-      <ui:define name="conteudoPrincipal">
+   <ui:define name="conteudoPrincipal">
+      <div class="painel-formulario">
+         <div class="painel-titulo">#{tarefaBean.modoEdicao ? 'Editar Tarefa':'Cadastrar Tarefa'}</div>
+         <div class="painel-conteudo">
+            <h:form id="formCadastro">
+               <h:panelGrid columns="2" cellpadding="5" styleClass="grid-cadastro" columnClasses="col-label, col-field">
 
-         <h:form id="formCadastro">
+                  <h:outputLabel for="titulo" value="Título:" />
+                  <h:inputText id="titulo" value="#{tarefaBean.tarefa.titulo}" required="true" requiredMessage="O título é obrigatório." styleClass="input-largo"/>
+                  <h:outputText value="" />
+                  <h:message for="titulo" styleClass="mensagem-erro" />
 
-            <h:panelGrid columns="2" cellpadding="5" styleClass="formularioCadastro">
-               <h:outputLabel for="titulo" value="Título:" />
-               <h:inputText id="titulo" value="#{tarefaBean.tarefa.titulo}" required="true" requiredMessage="O título é obrigatório." style="width: 300px;"/>
-               <h:outputText value="" />
-               <h:message for="titulo" style="color: red; font-size: 0.9em" />
+                  <h:outputLabel for="descricao" value="Descrição:" style="vertical-align: top;"/>
+                  <h:inputTextarea id="descricao" value="#{tarefaBean.tarefa.descricao}" rows="5" required="true" requiredMessage="A descrição é obrigatória." styleClass="textarea-largo"/>
+                  <h:outputText value="" />
+                  <h:message for="descricao" styleClass="mensagem-erro" />
 
-               <h:outputLabel for="descricao" value="Descrição:" />
-               <h:inputTextarea id="descricao" value="#{tarefaBean.tarefa.descricao}" rows="5" cols="40" required="true" requiredMessage="A descrição é obrigatória." style="width: 300px;"/>
-               <h:outputText value="" />
-               <h:message for="descricao" style="color: red; font-size: 0.9em" />
+                  <h:outputLabel for="responsavel" value="Responsável:" />
+                  <h:selectOneMenu id="responsavel" value="#{tarefaBean.tarefa.responsavel}" required="true" requiredMessage="Selecione um responsável." styleClass="input-select">
+                     <f:selectItem itemLabel="Select" itemValue="" />
+                     <f:selectItems value="#{tarefaBean.responsaveis}" />
+                  </h:selectOneMenu>
+                  <h:outputText value="" />
+                  <h:message for="responsavel" styleClass="mensagem-erro" />
 
-               <h:outputLabel for="responsavel" value="Responsável:" />
-               <h:selectOneMenu id="responsavel" value="#{tarefaBean.tarefa.responsavel}" required="true" requiredMessage="Selecione um responsável.">
-                  <f:selectItem itemLabel="-- Selecione --" itemValue="" />
-                  <f:selectItems value="#{tarefaBean.responsaveis}" />
-               </h:selectOneMenu>
-               <h:outputText value="" />
-               <h:message for="responsavel" style="color: red; font-size: 0.9em" />
+                  <h:outputLabel for="prioridade" value="Prioridade:" />
+                  <h:selectOneMenu id="prioridade" value="#{tarefaBean.tarefa.prioridade}" required="true" requiredMessage="Selecione uma prioridade." styleClass="input-select">
+                     <f:selectItem itemLabel="Select" noSelectionOption="true" />
+                     <f:selectItems value="#{tarefaBean.prioridades}" />
+                  </h:selectOneMenu>
+                  <h:outputText value="" />
+                  <h:message for="prioridade" styleClass="mensagem-erro" />
 
-               <h:outputLabel for="prioridade" value="Prioridade:" />
-               <h:selectOneMenu id="prioridade" value="#{tarefaBean.tarefa.prioridade}" required="true" requiredMessage="Selecione uma prioridade.">
-                  <f:selectItem itemLabel="-- Selecione --" itemValue="" />
-                  <f:selectItems value="#{tarefaBean.prioridades}" />
-               </h:selectOneMenu>
-               <h:outputText value="" />
-               <h:message for="prioridade" style="color: red; font-size: 0.9em" />
+                  <h:outputLabel for="deadline" value="Deadline:" />
+                  <h:inputText id="deadline" value="#{tarefaBean.deadlineFormulario}" required="true" requiredMessage="A data limite é obrigatória." styleClass="input-curto">
+                     <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+                  </h:inputText>
+                  <h:outputText value="" />
+                  <h:message for="deadline" styleClass="mensagem-erro" />
 
-               <h:outputLabel for="deadline" value="Deadline:" />
-               <h:inputText id="deadline" value="#{tarefaBean.deadlineFormulario}" required="true" requiredMessage="A data limite é obrigatória.">
-                  <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/> </h:inputText>
-               <h:outputText value="" />
-               <h:message for="deadline" style="color: red; font-size: 0.9em" />
+               </h:panelGrid>
 
-            </h:panelGrid>
+               <div class="div-botao-centralizado">
+                  <h:commandButton value="#{tarefaBean.modoEdicao ? 'Atualizar' : 'Cadastrar'}"
+                                   action="#{tarefaBean.salvar}" styleClass="botao-principal" />
+               </div>
+               <br/>
 
-            <h:commandButton value="#{tarefaBean.modoEdicao ? 'Atualizar tarefa':'Cadastrar tarefa'}"
-                             action="#{tarefaBean.salvar}" style="margin-top:15px;" />
-            <br/>
-
-            <h:messages globalOnly="true"
-                        infoClass="mensagemGlobalInfo"
-                        warnClass="mensagemGlobalWarn"
-                        errorClass="mensagemGlobalError"
-                        fatalClass="mensagemGlobalFatal"
-                        layout="list" />
-         </h:form>
-
-      </ui:define>
-
+               <h:messages globalOnly="true"
+                           infoClass="mensagemGlobalInfo"
+                           errorClass="mensagemGlobalError"
+                           layout="list" />
+            </h:form>
+         </div>
+      </div>
+   </ui:define>
 </ui:composition>
-
 </html>
