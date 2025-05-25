@@ -36,11 +36,4 @@ public class TarefaService {
         return tarefaDao.listarComFiltros(numeroId, tituloDescricao, responsavel, situacao);
     }
 
-    public List<Tarefa> listarPorSituacao(Situacao situacao){
-        return tarefaDao.listarPorSituacao(situacao);
-    }
-
-    public List<Tarefa> listarPorResponsavel(String responsavel){
-        return tarefaDao.listarPorResponsavel(responsavel);
-    }
 }
