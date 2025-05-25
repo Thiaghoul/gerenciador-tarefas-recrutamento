@@ -46,20 +46,30 @@ public class TarefaListagemBean implements Serializable {
         System.out.println("Tarefa listagem bean: buscar()");
 
         try{
-            this.tarefasFiltradas = tarefaService.listarTodas();
+            this.tarefasFiltradas = tarefaService.listarComFiltros(
+                    this.filtroNumero,
+                    this.filtroTituloDescricao,
+                    filtroResponsavel,
+                    this.filtroSituacao
+            );
+
             if(this.tarefasFiltradas.isEmpty()){
                 System.out.println("Nenhuma tarefa encontrada");
 
             }else{
-                System.out.println(this.tarefasFiltradas.size() + " tarefa(s) encontrada(s).");
-
+                System.out.println();
             }
         }catch (Exception e){
-            System.out.println("Erro ao buscar tarefas: " + e.getMessage());
+            System.err.println("Erro ao filtrar tarefas: "+ e.getMessage());
             e.printStackTrace();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
+                    FacesMessage.SEVERITY_ERROR,
+                    "Erro na busca",
+                    "Ocorreu um problema ao buscar as tarefas"
+            ));
             this.tarefasFiltradas = new ArrayList<>();
-
         }
+
     }
 
 
