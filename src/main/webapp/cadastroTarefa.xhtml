@@ -53,6 +53,11 @@
                   <h:commandButton value="#{tarefaBean.modoEdicao ? 'Atualizar' : 'Cadastrar'}"
                                    action="#{tarefaBean.salvar}" styleClass="botao-principal" />
                </div>
+
+               <div class="navegacao-formulario">
+                  <h:link outcome="listagemTarefas" value="Voltar para Listagem" styleClass="link-navegacao"/>
+               </div>
+
                <br/>
 
                <h:messages globalOnly="true"
@@ -62,6 +67,7 @@
             </h:form>
          </div>
       </div>
+
    </ui:define>
 </ui:composition>
 </html>

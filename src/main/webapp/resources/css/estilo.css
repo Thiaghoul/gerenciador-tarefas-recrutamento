@@ -28,6 +28,83 @@ body {
     font-size: 0.9em;
 }
 
+
+/* --- ESTILOS PARA PÁGINA INICIAL (index.xhtml) --- */
+
+.painel-inicial {
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    margin: 30px auto;
+    width: 70%;
+    max-width: 750px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.painel-titulo-inicial {
+    background-color: #f0f0f0;
+    padding: 15px 20px;
+    font-weight: bold;
+    font-size: 1.3em; /
+    border-bottom: 1px solid #dddddd;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: #333;
+}
+
+.painel-conteudo-inicial {
+    padding: 30px 25px;
+    font-size: 1.05em;
+    line-height: 1.6;
+}
+
+.painel-conteudo-inicial p {
+    margin-bottom: 15px;
+}
+
+.acoes-iniciais {
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+.botao-link-grande {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #007bff;
+    color: white !important;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    margin: 5px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.botao-link-grande:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+    color: white !important;
+}
+
+.info-projeto {
+    margin-top: 30px;
+    text-align: left;
+    font-size: 0.9em;
+    color: #555;
+    border-top: 1px dashed #eee;
+    padding-top: 20px;
+}
+
+.info-projeto ul {
+    list-style-position: inside;
+    padding-left: 0;
+}
+.info-projeto li {
+    margin-bottom: 5px;
+}
+
 /* --- ESTILOS PARA PAINÉIS (Cadastro e Listagem) --- */
 .painel-formulario, .painel-listagem {
     border: 1px solid #cccccc;

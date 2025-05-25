@@ -3,12 +3,12 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4; /* Um fundo geral suave se o conteúdo não preencher tudo */
+    background-color: #f4f4f4;
     color: #333;
 }
 
 /* --- ESTILOS PARA O TEMPLATE PRINCIPAL (template.xhtml) --- */
-.header-template { /* Supondo que você tenha uma div com esta classe no seu template */
+.header-template {
     background-color: #333;
     color: white;
     padding: 15px 20px;
@@ -16,19 +16,93 @@ body {
 }
 
 .content-template {
-    padding: 10px; /* Espaço para o conteúdo principal não colar nas bordas */
-    min-height: calc(100vh - 120px); /* Tenta fazer o conteúdo ocupar a altura, ajuste o valor 120px conforme altura do header/footer */
+    padding: 10px;
+    min-height: calc(100vh - 120px);
 }
 
-.footer-template { /* Supondo que você tenha uma div com esta classe no seu template */
+.footer-template {
     background-color: #333;
     color: white;
     text-align: center;
     padding: 10px 0;
-    /* position: fixed; /* Descomente se quiser rodapé fixo no fundo da tela */
-    /* bottom: 0; */
-    /* width: 100%; */
     font-size: 0.9em;
+}
+
+
+/* --- ESTILOS PARA PÁGINA INICIAL (index.xhtml) --- */
+
+.painel-inicial {
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    margin: 30px auto;
+    width: 70%;
+    max-width: 750px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.painel-titulo-inicial {
+    background-color: #f0f0f0;
+    padding: 15px 20px;
+    font-weight: bold;
+    font-size: 1.3em; /
+    border-bottom: 1px solid #dddddd;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: #333;
+}
+
+.painel-conteudo-inicial {
+    padding: 30px 25px;
+    font-size: 1.05em;
+    line-height: 1.6;
+}
+
+.painel-conteudo-inicial p {
+    margin-bottom: 15px;
+}
+
+.acoes-iniciais {
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+.botao-link-grande {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #007bff;
+    color: white !important;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    margin: 5px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.botao-link-grande:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+    color: white !important;
+}
+
+.info-projeto {
+    margin-top: 30px;
+    text-align: left;
+    font-size: 0.9em;
+    color: #555;
+    border-top: 1px dashed #eee;
+    padding-top: 20px;
+}
+
+.info-projeto ul {
+    list-style-position: inside;
+    padding-left: 0;
+}
+.info-projeto li {
+    margin-bottom: 5px;
 }
 
 /* --- ESTILOS PARA PAINÉIS (Cadastro e Listagem) --- */
@@ -50,18 +124,18 @@ body {
 }
 
 .painel-titulo {
-    background-color: #f0f0f0; /* Fundo cinza claro para a barra de título */
+    background-color: #f0f0f0;
     padding: 12px 20px;
     font-weight: bold;
     font-size: 1.1em;
-    border-bottom: 1px solid #dddddd; /* Borda inferior do título */
-    border-top-left-radius: 5px; /* Arredondar cantos superiores */
+    border-bottom: 1px solid #dddddd;
+    border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    color: #444; /* Cor do texto do título */
+    color: #444;
 }
 
 .painel-conteudo {
-    padding: 25px; /* Mais padding interno */
+    padding: 25px;
 }
 
 
@@ -72,10 +146,10 @@ body {
 
 .grid-cadastro .col-label {
     text-align: right;
-    padding-right: 15px; /* Mais espaço entre label e campo */
-    width: 130px;       /* Largura dos labels */
+    padding-right: 15px;
+    width: 130px;
     vertical-align: top;
-    padding-top: 10px;  /* Alinhar com o padding dos inputs */
+    padding-top: 10px;
     font-weight: bold;
     color: #555;
 }
@@ -86,7 +160,7 @@ body {
 }
 
 .input-largo, .textarea-largo, .input-select, .input-curto {
-    padding: 8px 10px; /* Padding interno dos campos */
+    padding: 8px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -108,8 +182,8 @@ body {
 }
 
 .input-select {
-    width: 220px; /* Um pouco mais largo para os selects */
-    background-color: white; /* Garante fundo branco */
+    width: 220px;
+    background-color: white;
     height: 36px;
     box-sizing: border-box;
 }
@@ -121,12 +195,12 @@ body {
 }
 
 .mensagem-erro {
-    color: #D8000C; /* Vermelho mais escuro */
+    color: #D8000C;
     font-size: 0.85em;
     display: block;
     min-height: 1.2em;
     margin-top: 2px;
-    padding-left: 2px; /* Pequeno recuo */
+    padding-left: 2px;
 }
 
 .div-botao-centralizado {
@@ -135,7 +209,7 @@ body {
 }
 
 .botao-principal {
-    padding: 0 22px; /* Padding horizontal */
+    padding: 0 22px;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -153,7 +227,7 @@ body {
 
 /* --- ESTILOS PARA FILTROS (listagemTarefas.xhtml) --- */
 .secao-filtros-container {
-    background-color: #f7f7f7; /* Fundo da área de filtros */
+    background-color: #f7f7f7;
     padding: 20px;
     border-radius: 4px;
     margin-bottom: 25px;
@@ -163,7 +237,7 @@ body {
 .linha-filtro {
     display: flex;
     align-items: center;
-    margin-bottom: 12px; /* Mais espaço entre as linhas de filtro */
+    margin-bottom: 12px;
 }
 .linha-filtro:last-child {
     margin-bottom: 0;
@@ -179,7 +253,7 @@ body {
 }
 
 .input-filtro-numero {
-    width: 180px; /* Largura do campo Número */
+    width: 180px;
     padding: 8px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -192,11 +266,10 @@ body {
     border-radius: 4px;
 }
 
-.grupo-campos-inline { /* Container para Responsável, Situação e Botão Buscar */
+.grupo-campos-inline {
     display: flex;
     align-items: center;
     flex-grow: 1;
-    flex-wrap: wrap;
     gap: 10px;
 }
 
@@ -206,12 +279,12 @@ body {
     padding: 8px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    height: 36px; /* Para alinhar altura com botão */
+    height: 36px;
     box-sizing: border-box;
 }
 
-.label-para-situacao { /* Label "Situação:" que fica antes do seu select */
-    margin-left: 10px; /* Espaço depois do select de Responsável */
+.label-para-situacao {
+    margin-left: 10px;
     margin-right: 5px;
     font-weight: bold;
     color: #555;
@@ -219,13 +292,13 @@ body {
 
 .botao-buscar {
     background-color: #f0f0f0;
-    padding: 0 20px; /* Padding horizontal */
+    padding: 0 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
     font-weight: normal;
     margin-left: auto;
-    height: 36px; /* Para alinhar altura com os selects */
+    height: 36px;
     box-sizing: border-box;
     color: #333;
 }
@@ -244,13 +317,13 @@ body {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
-    font-size: 0.9em; /* Fonte um pouco menor para caber mais info */
+    font-size: 0.9em;
 }
 
 .tabela-tarefas th, .tabela-tarefas .cabecalho-tabela-jsf th, .tabela-tarefas .cabecalho-tabela-jsf td {
-    background-color: #6c757d; /* Cinza mais escuro e moderno */
+    background-color: #6c757d;
     color: white;
-    padding: 12px 10px; /* Mais padding no cabeçalho */
+    padding: 12px 10px;
     text-align: center;
     border: 1px solid #5a6268;
 }
@@ -296,11 +369,11 @@ body {
 
 /* --- ESTILOS PARA MENSAGENS GLOBAIS (usado em ambas as páginas) --- */
 .mensagemGlobalInfo, .mensagemGlobalError, .mensagemGlobalWarn, .mensagemGlobalFatal {
-    margin: 15px 0; /* Margem apenas no topo/baixo se estiver no fluxo */
+    margin: 15px 0;
     padding: 12px 15px;
     border-radius: 4px;
-    text-align: left; /* Mensagens de sistema geralmente são alinhadas à esquerda */
-    list-style-position: inside; /* Se estiver usando layout="list" */
+    text-align: left;
+    list-style-position: inside;
 }
 .mensagemGlobalInfo { border: 1px solid #28a745; background-color: #d4edda; color: #155724; }
 .mensagemGlobalError { border: 1px solid #dc3545; background-color: #f8d7da; color: #721c24; }
