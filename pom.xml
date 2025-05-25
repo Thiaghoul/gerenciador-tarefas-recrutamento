@@ -11,23 +11,22 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
+    <junit.jupiter.version>5.10.2</junit.jupiter.version> </properties>
 
   <dependencies>
 
     <dependency>
       <groupId>javax.annotation</groupId>
       <artifactId>javax.annotation-api</artifactId>
-      <version>1.3.2</version> <scope>provided</scope>
+      <version>1.3.2</version>
+      <scope>provided</scope>
     </dependency>
-    <!-- JSF (Mojarra) -->
     <dependency>
       <groupId>org.glassfish</groupId>
       <artifactId>javax.faces</artifactId>
       <version>2.2.20</version>
     </dependency>
 
-    <!-- JPA (Hibernate) -->
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
@@ -39,14 +38,12 @@
       <version>5.6.14.Final</version>
     </dependency>
 
-    <!-- PostgreSQL -->
     <dependency>
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>42.5.4</version>
     </dependency>
 
-    <!-- CDI -->
     <dependency>
       <groupId>javax.enterprise</groupId>
       <artifactId>cdi-api</artifactId>
@@ -54,7 +51,6 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- Servlet API -->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
@@ -62,18 +58,25 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- JUnit -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <version>RELEASE</version>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${junit.jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>${junit.jupiter.version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
-      <version>2.2.224</version> <scope>test</scope> </dependency>
+      <version>2.2.224</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -106,7 +109,8 @@
                 <artifactItem>
                   <groupId>com.github.jsimone</groupId>
                   <artifactId>webapp-runner</artifactId>
-                  <version>9.0.85.0</version> <destFileName>webapp-runner.jar</destFileName>
+                  <version>9.0.52.1</version> {/* VERSÃO ATUALIZADA AQUI */}
+                  <destFileName>webapp-runner.jar</destFileName>
                 </artifactItem>
               </artifactItems>
             </configuration>
