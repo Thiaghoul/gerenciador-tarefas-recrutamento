@@ -13,8 +13,58 @@ import java.util.Map;
 
 public class TarefaDao {
 
-    private static final EntityManagerFactory emf =
-            Persistence.createEntityManagerFactory("gerenciador-tarefas");
+    private static final String PU_NAME = "gerenciador-tarefas";
+    private static EntityManagerFactory emf;
+
+    static {
+        Map<String, String> properties = new HashMap<>();
+        String dbHost = System.getenv("DB_HOST");
+        String dbPort = System.getenv("DB_PORT");
+        String dbName = System.getenv("DB_NAME");
+        String dbUser = System.getenv("DB_USER");
+        String dbPassword = System.getenv("DB_PASSWORD");
+        String hbm2ddl = System.getenv("HIBERNATE_HBM2DDL_AUTO");
+        String driver = System.getenv("JDBC_DRIVER");
+        String dialect = System.getenv("HIBERNATE_DIALECT");
+
+        // Verifica se as variáveis de ambiente essenciais para o Render foram setadas
+        if (dbHost != null && dbName != null && dbUser != null && dbPassword != null) {
+            String jdbcUrl = "jdbc:postgresql://" + dbHost + ":" +
+                    (dbPort != null ? dbPort : "5432") + "/" + dbName;
+
+            properties.put("javax.persistence.jdbc.url", jdbcUrl);
+            properties.put("javax.persistence.jdbc.user", dbUser);
+            properties.put("javax.persistence.jdbc.password", dbPassword);
+
+            if (driver != null) {
+                properties.put("javax.persistence.jdbc.driver", driver);
+            } else {
+                properties.put("javax.persistence.jdbc.driver", "org.postgresql.Driver");
+            }
+
+            if (dialect != null) {
+                properties.put("hibernate.dialect", dialect);
+            } else {
+                properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+            }
+
+            if (hbm2ddl != null) {
+                properties.put("hibernate.hbm2ddl.auto", hbm2ddl);
+            } else {
+                properties.put("hibernate.hbm2ddl.auto", "update");
+            }
+
+            properties.put("hibernate.show_sql", "false");
+
+            emf = Persistence.createEntityManagerFactory(PU_NAME, properties);
+            System.out.println("INFO: TarefaDao - EMF criado com configurações via variáveis de ambiente (Render).");
+        } else {
+            // Fallback para o persistence.xml local se as variáveis de ambiente não estiverem setadas
+            // Útil para rodar localmente sem precisar configurar todas essas variáveis de ambiente.
+            emf = Persistence.createEntityManagerFactory(PU_NAME);
+            System.out.println("INFO: TarefaDao - EMF criado com persistence.xml padrão (ambiente local?).");
+        }
+    }
 
 
     public void salvar(Tarefa tarefa){
