@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+              version="2.2">
+    <navigation-rule>
+        <description>Regra para navegar para a tela de cadastro de tarefa</description>
+        <from-view-id>*</from-view-id> <navigation-case>
+        <from-outcome>cadastroTarefa</from-outcome>
+        <to-view-id>/cadastroTarefa.xhtml</to-view-id>
+        <redirect/> </navigation-case>
+    </navigation-rule>
+
+</faces-config>

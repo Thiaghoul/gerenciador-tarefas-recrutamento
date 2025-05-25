@@ -20,18 +20,18 @@
                <h:outputLabel for="responsavel" value="Responsável:" />
                <h:selectOneMenu id="responsavel" value="#{tarefaBean.tarefa.responsavel}" required="true" requiredMessage="Selecione um responsável.">
                   <f:selectItem itemLabel="-- Selecione --" itemValue="" />
-                  <f:selectItems value="#{tarefaBean.responsaveisDisponiveis}" />
+                  <f:selectItems value="#{tarefaBean.responsaveis}" />
                </h:selectOneMenu>
 
                <h:outputLabel for="prioridade" value="Prioridade:" />
                <h:selectOneMenu id="prioridade" value="#{tarefaBean.tarefa.prioridade}" required="true" requiredMessage="Selecione uma prioridade.">
                   <f:selectItem itemLabel="-- Selecione --" itemValue="" />
-                  <f:selectItems value="#{tarefaBean.prioridadesDisponiveis}" />
+                  <f:selectItems value="#{tarefaBean.prioridades}" />
                </h:selectOneMenu>
 
                <h:outputLabel for="deadline" value="Deadline:" />
-               <h:inputText id="deadline" value="#{tarefaBean.tarefa.deadline}" required="true" requiredMessage="A data limite é obrigatória.">
-                  <f:convertDateTime pattern="dd/MM/yyyy" /> </h:inputText>
+               <h:inputText id="deadline" value="#{tarefaBean.deadlineFormulario}" required="true" requiredMessage="A data limite é obrigatória.">
+                  <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/> </h:inputText>
 
             </h:panelGrid>
 
